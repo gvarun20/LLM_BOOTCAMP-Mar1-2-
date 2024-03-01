@@ -1,0 +1,31 @@
+@startuml
+class EnergyPredictionSystem {
+  +trainModel(trainingData: Dataset): void
+  +predictPowerOutput(inputData: EnvironmentalData): float
+}
+
+class Dataset {
+  -data: List<DataPoint>
+  +addDataPoint(dataPoint: DataPoint): void
+}
+
+class DataPoint {
+  -ambientTemperature: float
+  -exhaustVacuum: float
+  -ambientPressure: float
+  -relativeHumidity: float
+  -powerOutput: float
+}
+
+class EnvironmentalData {
+  -ambientTemperature: float
+  -exhaustVacuum: float
+  -ambientPressure: float
+  -relativeHumidity: float
+}
+
+EnergyPredictionSystem -- Dataset
+Dataset -- DataPoint
+EnergyPredictionSystem -- EnvironmentalData
+
+@enduml
