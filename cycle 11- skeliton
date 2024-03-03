@@ -1,0 +1,24 @@
+library(shiny)
+
+# UI
+ui <- fluidPage(
+  titlePanel("Simple Shiny App"),
+  sidebarLayout(
+    sidebarPanel(
+      numericInput("n", "Select a number", 1)
+    ),
+    mainPanel(
+      textOutput("result")
+    )
+  )
+)
+
+# Server
+server <- function(input, output) {
+  output$result <- renderText({
+    paste("You selected:", input$n)
+  })
+}
+
+# Run the app
+shinyApp(ui, server)
